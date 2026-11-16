@@ -15,6 +15,7 @@ public class Main {
             lista.anadirCliente(new Cliente(3, "Marta Ruiz", 15.75f, LocalDate.of(1998, 1, 28)));
             lista.anadirCliente(new Cliente(4, "Pablo Gómez", 980f, LocalDate.of(1985, 7, 9)));
             lista.anadirCliente(new Cliente(5, "Lucía Torres", 500f, LocalDate.of(2005, 3, 21)));
+            lista.anadirCliente(new Cliente(6, "JACINTO", 600f, LocalDate.of(2004, 7, 23)));
             lista.irAlPrimero();   // anadirCliente deja el actual en el ultimo añadido
 
             VentanaPrincipal ventana = new VentanaPrincipal();

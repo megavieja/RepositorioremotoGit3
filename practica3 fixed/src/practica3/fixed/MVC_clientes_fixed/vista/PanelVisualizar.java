@@ -8,21 +8,23 @@ import javax.swing.*;
  * VISTA: panel que muestra UN cliente cada vez.
  * Solo dibuja y expone metodos. No tiene logica ni conoce la clase Cliente.
  */
+
 public class PanelVisualizar extends JPanel {
     private final JLabel lblPosicion = new JLabel("", SwingConstants.CENTER);
     private final JTextField txtNumero = new JTextField();
     private final JTextField txtNombre = new JTextField();
     private final JTextField txtPuntos = new JTextField();
     private final JTextField txtFecha = new JTextField();
-
+    
     private final JButton btnPrimero = new JButton("|<");
     private final JButton btnAnterior = new JButton("<");
     private final JButton btnSiguiente = new JButton(">");
     private final JButton btnUltimo = new JButton(">|");
     private final JButton btnBorrar = new JButton("Borrar cliente");
+    private final JButton btnCambiar = new JButton("Cambio Color");
 
     public PanelVisualizar() {
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout(15, 15));
         setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
         // Los datos son solo de lectura: se ven, pero no se editan
@@ -41,7 +43,8 @@ public class PanelVisualizar extends JPanel {
         botones.add(btnSiguiente);
         botones.add(btnUltimo);
         botones.add(btnBorrar);
-
+        botones.add(btnCambiar);
+         
         add(lblPosicion, BorderLayout.NORTH);
         add(datos, BorderLayout.CENTER);
         add(botones, BorderLayout.SOUTH);
@@ -53,6 +56,7 @@ public class PanelVisualizar extends JPanel {
         lblPosicion.setText("Cliente " + posicion + " de " + total);
         txtNumero.setText(numero);
         txtNombre.setText(nombre);
+        txtNombre.setForeground(Color.red);
         txtPuntos.setText(puntos);
         txtFecha.setText(fecha);
     }
@@ -73,6 +77,7 @@ public class PanelVisualizar extends JPanel {
         btnSiguiente.setEnabled(puedeAvanzar);
         btnUltimo.setEnabled(puedeAvanzar);
         btnBorrar.setEnabled(hayClientes);
+        btnCambiar.setEnabled(hayClientes);
     }
 
     /** Ventana de confirmacion. Devuelve true si el usuario pulsa "Si". */
@@ -82,11 +87,43 @@ public class PanelVisualizar extends JPanel {
                 "Confirmar borrado", JOptionPane.YES_NO_OPTION);
         return r == JOptionPane.YES_OPTION;
     }
+    public void CambiarColor(boolean confirma) {
+        int aux  = 1;
+        
+        
+        switch (aux){
+                case 1:
+                    txtNombre.setForeground(Color.red);
+                    aux= aux+1;
+                    break;
+                case 2:
+                    txtNombre.setForeground(Color.blue);
+                    aux= aux+1;
 
+                    break;
+                case 3:
+                    txtNombre.setForeground(Color.yellow);
+                    aux= aux+1;
+
+                    break;
+                case 4:
+                    txtNombre.setForeground(Color.green);
+                    aux= 1;
+                    break;
+        }            
+        
+    
+    
+    
+    
+    
+    }
     // La vista solo avisa de que "se pulso algo"
     public void addPrimeroListener(ActionListener l)   { btnPrimero.addActionListener(l); }
     public void addAnteriorListener(ActionListener l)  { btnAnterior.addActionListener(l); }
     public void addSiguienteListener(ActionListener l) { btnSiguiente.addActionListener(l); }
     public void addUltimoListener(ActionListener l)    { btnUltimo.addActionListener(l); }
     public void addBorrarListener(ActionListener l)    { btnBorrar.addActionListener(l); }
+    
+    
 }
